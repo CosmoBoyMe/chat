@@ -1,0 +1,21 @@
+.login-form {
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__title--blue {
+    color: skyblue;
+  }
+
+  &__text {
+    margin-bottom: 48px;
+  }
+
+  &__submit-btn {
+    margin-top: 16px;
+  }
+
+  &__field {
+    margin-bottom: 32px;
+  }
+}

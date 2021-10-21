@@ -1,0 +1,22 @@
+.form-field {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    margin-bottom: 4px;
+
+    color: #333;
+
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  &__error-message {
+    margin-top: 4px;
+
+    color: #fb6262;
+
+    font-size: 13px;
+    line-height: 19px;
+  }
+}
