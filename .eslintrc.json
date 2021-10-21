@@ -26,6 +26,10 @@
         }
     },
     "rules": {
+        "no-unused-vars": "off",
+        "react/button-has-type": "off",
+        "object-curly-newline": "off",
+        "react/require-default-props": "off",
         "react/react-in-jsx-scope": "off",
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": [
@@ -43,6 +47,8 @@
             "error",
             "ignorePackages",
             {
+                "js": "never",
+                "jsx": "never",
                 "ts": "never",
                 "tsx": "never"
             }
