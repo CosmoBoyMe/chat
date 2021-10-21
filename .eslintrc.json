@@ -26,6 +26,7 @@
         }
     },
     "rules": {
+        "linebreak-style": "off",
         "no-unused-vars": "off",
         "react/button-has-type": "off",
         "object-curly-newline": "off",
