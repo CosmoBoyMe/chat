@@ -1,5 +1,5 @@
 import './App.scss';
-import FormLogin from './Components/organisms/FormLogin';
+import { FormLogin } from './Components/organisms/FormLogin';
 
 function App() {
   return (

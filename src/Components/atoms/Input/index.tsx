@@ -1,20 +1,28 @@
-import { ChangeEvent, FC } from 'react';
 import './Input.scss';
-import cn from 'classnames';
+import { ChangeEvent, FC } from 'react';
+import classNames from 'classnames';
 
-interface IProps {
+interface IInputProps {
   value: string;
   name: string;
   id: string;
   type: 'password' | 'text';
   isValid?: boolean;
   placeholder?: string;
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input: FC<IProps> = ({ placeholder, value, name, id, type, onChange, isValid = true }) => (
+export const Input: FC<IInputProps> = ({
+  placeholder,
+  value,
+  name,
+  id,
+  type,
+  onChange,
+  isValid = true,
+}) => (
   <div
-    className={cn('input-field', {
+    className={classNames('input-field', {
       'input-field--error': !isValid,
     })}
   >
@@ -29,5 +37,3 @@ const Input: FC<IProps> = ({ placeholder, value, name, id, type, onChange, isVal
     />
   </div>
 );
-
-export default Input;

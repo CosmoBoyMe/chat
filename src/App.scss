@@ -7,9 +7,93 @@
   width: 100%;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
 body {
   color: #333;
 
   font-family: Montserrat, sans-serif;
   font-style: normal;
+}
+
+.container {
+  max-width: 1440px;
+  padding: 0 15px;
+}
+
+@media screen and (max-width: 375px) {
+  h1 {
+    font-size: 27px;
+    font-weight: 800;
+    line-height: 33px;
+  }
+
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+  }
+
+  h3 {
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 18px;
+  }
+
+  h4 {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+  }
+
+  p {
+    color: #303030;
+
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .text--size-small {
+    font-style: 13px;
+    line-height: 16px;
+  }
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 51px;
+}
+
+h2 {
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 33px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+}
+
+h4 {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 18px;
+}
+
+p {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.text--size-small {
+  font-style: 14px;
+  line-height: 17px;
 }

@@ -1,8 +1,8 @@
-import { ChangeEvent, FC } from 'react';
-import { Input } from '../../atoms';
 import './FormField.scss';
+import { ChangeEvent, FC } from 'react';
+import { Input } from '../../atoms/Input';
 
-interface IProps {
+interface IFormFieldProps {
   value: string;
   name: string;
   id: string;
@@ -10,12 +10,11 @@ interface IProps {
   type: 'password' | 'text';
   isValid?: boolean;
   placeholder?: string;
-  className?: string;
   errorMessage?: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-const FormField: FC<IProps> = ({
+export const FormField: FC<IFormFieldProps> = ({
   placeholder,
   type,
   label,
@@ -24,10 +23,9 @@ const FormField: FC<IProps> = ({
   name,
   id,
   isValid = true,
-  className,
   errorMessage,
 }) => (
-  <div className={`form-field ${className}`}>
+  <div className="form-field">
     <label className="form-field__label" htmlFor={id}>
       {label}
     </label>
@@ -45,5 +43,3 @@ const FormField: FC<IProps> = ({
     )}
   </div>
 );
-
-export default FormField;
