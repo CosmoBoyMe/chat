@@ -9,14 +9,14 @@ interface IMessage {
 }
 
 interface IMessagesProps {
-  messages: { dialogId: number; messages: Array<IMessage> };
+  messages: { dialogId: number; messages: IMessage[] };
 }
 
 export const Messages: FC<IMessagesProps> = ({ messages }) => (
   <div className="messages">
-    {messages.messages.map((item: { message: string; isUserMessage: boolean }) => (
+    {messages.messages.map((item: { message: string; isUserMessage: boolean }, index) => (
       <div
-        key={1}
+        key={`${messages.dialogId}_${index}`}
         className={cn('messages__message', {
           'messages__message--right': item.isUserMessage,
         })}

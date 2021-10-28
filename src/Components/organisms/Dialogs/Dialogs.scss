@@ -9,6 +9,12 @@
   &__link--active {
     color: white;
     background-color: #5c98f1;
+    & span {
+      color: white;
+    }
+    & p {
+      color: white;
+    }
   }
 
   &__empty {

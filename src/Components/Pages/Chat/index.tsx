@@ -23,14 +23,20 @@ interface IMessages {
 const data = [
   {
     dialogId: 1,
-    name: 'Konstantin Konstantinopolski',
+    name: 'John Wick',
     gender: 'male',
     status: 0,
     messages: {
       dialogId: 1,
       messages: [
-        { message: 'hey', isUserMessage: true },
-        { message: 'hey', isUserMessage: true },
+        {
+          message: 'В этой жизни нет никакого смысла. Плохие дни нет-нет да случаются.',
+          isUserMessage: true,
+        },
+        {
+          message: 'Джон Уик — не Бугимэн. Он тот, кого посылают убить грёбаного Бугимена',
+          isUserMessage: true,
+        },
       ],
     },
   },
@@ -43,11 +49,11 @@ const data = [
       dialogId: 2,
       messages: [
         {
-          message: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
+          message: 'Сдам в аренду костюм доставщика еды. Посуточно.',
           isUserMessage: true,
         },
         {
-          message: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem',
+          message: 'Почему-то большинство людей считает, что они хитрее моего ружья.',
           isUserMessage: false,
         },
       ],
@@ -61,8 +67,12 @@ const data = [
     messages: {
       dialogId: 3,
       messages: [
-        { message: 'hey', isUserMessage: true },
-        { message: 'hey', isUserMessage: false },
+        {
+          message:
+            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+          isUserMessage: true,
+        },
+        { message: 'Летающих тарелок нет, это выдумки инопланетян.', isUserMessage: false },
       ],
     },
   },
@@ -73,7 +83,7 @@ const data = [
     status: 10,
     messages: {
       dialogId: 4,
-      messages: [{ message: 'hey', isUserMessage: true }],
+      messages: [{ message: 'Hey.', isUserMessage: true }],
     },
   },
 ];
