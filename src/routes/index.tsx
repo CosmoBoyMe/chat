@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { Switch, Route, Redirect } from 'react-router';
 import { SCREENS } from './endpoints';
-import { Chat } from '../Components/templates/Chat';
-import { Authorization } from '../Components/templates/Authorization';
+import { Chat } from '../Components/Pages/Chat';
+import { Authorization } from '../Components/Pages/Authorization';
 
 export const Routes: FC = () => (
   <Switch>
