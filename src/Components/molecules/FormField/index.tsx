@@ -10,7 +10,7 @@ interface IFormFieldProps {
   type: 'password' | 'text';
   isValid?: boolean;
   placeholder?: string;
-  errorMessage?: string;
+  errorMessage?: string | null;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 

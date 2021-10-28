@@ -1,0 +1,49 @@
+.authorization {
+  height: 100vh;
+  display: flex;
+  &__log-in {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__background {
+    background-image: url('../../../assets/svg/auth-background.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1090px) {
+  .authorization {
+    flex-direction: column;
+    position: relative;
+    height: 100vh;
+    &__log-in {
+      align-items: normal;
+      position: absolute;
+      top: calc(48.5vh - 200px);
+      height: 70%;
+    }
+    &__background {
+      height: 48.5vh;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .authorization {
+    &__log-in {
+      top: calc(48.5vh - 150);
+    }
+  }
+}
+
+@media (max-width: 375px) {
+  .authorization {
+    &__log-in {
+      top: calc(48.5vh - 120);
+    }
+  }
+}

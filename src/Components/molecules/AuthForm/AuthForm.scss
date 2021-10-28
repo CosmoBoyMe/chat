@@ -1,0 +1,23 @@
+.auth-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  &__field {
+    margin-bottom: 32px;
+  }
+
+  &__submit-btn {
+    margin-top: 48px;
+  }
+}
+
+@media (max-width: 1090px) {
+  .auth-form {
+    height: 100%;
+    &__submit-btn {
+      margin-top: 0;
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}

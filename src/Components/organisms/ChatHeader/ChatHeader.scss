@@ -1,0 +1,12 @@
+.chat-header {
+  display: flex;
+
+  padding: 24px;
+
+  background-color: white;
+
+  .chat-header__avatar {
+    width: 40px;
+    margin-right: 12px;
+  }
+}

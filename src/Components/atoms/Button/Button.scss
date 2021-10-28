@@ -1,4 +1,4 @@
-button {
+.button {
   width: 233px;
   height: 56px;
 
@@ -20,5 +20,11 @@ button {
 
   &:disabled {
     background-color: #d1d1d1;
+  }
+}
+
+@media (max-width: 520px) {
+  .button {
+    width: 100%;
   }
 }

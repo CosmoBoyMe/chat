@@ -1,0 +1,13 @@
+.dialog-info {
+  &__last-message {
+    overflow: hidden;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: #949494;
+  }
+  &__user-message {
+    color: #5e93e7;
+  }
+}

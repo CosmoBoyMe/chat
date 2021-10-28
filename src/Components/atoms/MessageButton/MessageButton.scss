@@ -1,0 +1,13 @@
+.message-button {
+  display: inline-flex;
+
+  width: 24px;
+  height: 24px;
+
+  cursor: pointer;
+
+  border: none;
+  background-color: transparent;
+  background-image: url('../../../assets/svg/send-message.svg');
+  background-repeat: no-repeat;
+}

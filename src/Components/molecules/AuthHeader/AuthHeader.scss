@@ -1,0 +1,31 @@
+.auth-header {
+  &__logo {
+    max-width: 112px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__title--blue {
+    color: #5e93e7;
+  }
+
+  &__title--light-blue {
+    color: #b3cdf8;
+  }
+}
+
+@media (max-width: 375px) {
+  .auth-header {
+    &__logo {
+      max-width: 84px;
+      margin-bottom: 16px;
+    }
+
+    &__title {
+      margin-bottom: 8px;
+    }
+  }
+}

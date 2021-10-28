@@ -1,11 +1,15 @@
 import './App.scss';
-import { FormLogin } from './Components/organisms/FormLogin';
+import { BrowserRouter as Router } from 'react-router-dom';
+
+import { Routes } from './routes';
 
 function App() {
   return (
-    <div className="App">
-      <FormLogin />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes />
+      </div>
+    </Router>
   );
 }
 

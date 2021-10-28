@@ -1,0 +1,28 @@
+.chat-info {
+  display: flex;
+  align-items: center;
+
+  &__avatar {
+    display: none;
+
+    min-width: 40px;
+    max-width: 40px;
+    margin-right: 12px;
+  }
+
+  &__name {
+    margin-bottom: 4px;
+  }
+
+  &__status {
+    color: #949494;
+  }
+}
+
+@media (max-width: 375px) {
+  .chat-info {
+    &__avatar {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+.message {
+  position: relative;
+
+  max-width: 400px;
+  margin-left: 20px; //delete
+  padding: 12px;
+
+  border-radius: 12px;
+
+  &-user {
+    background-color: #d7e6ff;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      right: -15px;
+
+      width: 0;
+      height: 0;
+
+      content: '';
+
+      border-width: 24px 24px 0 0;
+      border-style: solid;
+      border-color: #d7e6ff transparent transparent transparent;
+    }
+  }
+
+  &-companion {
+    background-color: white;
+
+    &::after {
+      position: absolute;
+      top: 0;
+      left: -15px;
+
+      width: 0;
+      height: 0;
+
+      content: '';
+
+      border-width: 0 24px 24px 0;
+      border-style: solid;
+      border-color: transparent white transparent transparent;
+    }
+  }
+}

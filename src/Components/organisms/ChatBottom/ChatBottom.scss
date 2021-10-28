@@ -1,0 +1,21 @@
+.chat-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 24px 25px;
+
+  background-color: white;
+
+  &__file-input {
+    width: 32px;
+    height: 32px;
+    margin-right: 37px;
+  }
+
+  &__message-button {
+    width: 24px;
+    height: 24px;
+    margin-left: 10px;
+  }
+}

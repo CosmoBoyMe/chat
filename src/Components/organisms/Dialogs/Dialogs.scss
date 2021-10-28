@@ -1,0 +1,23 @@
+.dialogs {
+  display: flex;
+  flex-direction: column;
+
+  &__link {
+    padding: 14px 24px;
+  }
+
+  &__link--active {
+    color: white;
+    background-color: #5c98f1;
+  }
+
+  &__empty {
+    width: 210px;
+    margin: 240px auto;
+  }
+  &__empty-img {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 24px;
+  }
+}

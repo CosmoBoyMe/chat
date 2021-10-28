@@ -1,0 +1,12 @@
+.dialog-item {
+  display: flex;
+
+  &__avatar {
+    width: 48px;
+    margin-right: 12px;
+  }
+
+  &__dialog-info {
+    max-width: 80%;
+  }
+}
