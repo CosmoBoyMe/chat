@@ -19,5 +19,3 @@ export const ChatBottom: FC = () => (
     </div>
   </>
 );
-// {
-// }

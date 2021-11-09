@@ -13,7 +13,7 @@ interface IChatHeaderProps {
 
 export const ChatHeader: FC<IChatHeaderProps> = ({ status, name, gender }) => {
   const history = useHistory();
-  const handlerClickBackButton: MouseEventHandler = (event) => {
+  const handlerClickBackButton: MouseEventHandler = () => {
     history.push(SCREENS.SCREEN_CHAT);
   };
 
