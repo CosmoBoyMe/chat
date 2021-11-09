@@ -1,0 +1,22 @@
+.sign-up-form {
+  max-width: 354px;
+  padding: 0 14px;
+
+  &__field {
+    margin-bottom: 32px;
+  }
+
+  &__buttons {
+    display: flex;
+
+    :first-child {
+      margin-right: 12px;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .sign-up__field {
+    margin-bottom: 24px;
+  }
+}

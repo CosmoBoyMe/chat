@@ -12,15 +12,7 @@ interface IInputProps {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input: FC<IInputProps> = ({
-  placeholder,
-  value,
-  name,
-  id,
-  type,
-  onChange,
-  isValid = true,
-}) => (
+export const Input: FC<IInputProps> = ({ placeholder, value, name, id, type, onChange, isValid = true }) => (
   <div
     className={classNames('input-field', {
       'input-field--error': !isValid,

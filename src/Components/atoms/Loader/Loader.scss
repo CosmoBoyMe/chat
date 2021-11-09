@@ -1,0 +1,22 @@
+.loader {
+  width: 56px;
+  height: 56px;
+  padding: 15px;
+
+  border-radius: 50%;
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.06%);
+
+  &__img {
+    animation: rotation 2s linear infinite;
+  }
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}

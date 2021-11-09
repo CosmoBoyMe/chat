@@ -1,0 +1,48 @@
+.sign-up {
+  padding: 0 15px;
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+
+    max-width: 475px;
+  }
+
+  &__header {
+    margin-bottom: 48px;
+  }
+
+  &__logo {
+    max-width: 112px;
+    max-height: 43px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__title--blue {
+    color: #5e93e7;
+  }
+
+  &__title--light-blue {
+    color: #b3cdf8;
+  }
+}
+
+@media (max-width: 1090px) {
+  .sign-up {
+    &__header {
+      margin-bottom: 123px;
+    }
+  }
+}
+
+@media (max-width: 520px) {
+  .sign-up {
+    &__header {
+      margin-bottom: 48px;
+    }
+  }
+}

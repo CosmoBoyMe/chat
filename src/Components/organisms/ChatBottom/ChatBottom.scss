@@ -1,9 +1,11 @@
 .chat-bottom {
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
-  padding: 24px 25px;
+  height: 9.5%;
+  min-height: 56px;
+  max-height: 90px;
+  padding: 10px 25px;
 
   background-color: white;
 

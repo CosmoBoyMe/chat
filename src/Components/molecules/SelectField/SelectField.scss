@@ -1,0 +1,35 @@
+.select-field {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 49%;
+
+  &__label {
+    margin-bottom: 4px;
+
+    color: #333;
+
+    font-size: 13px;
+    line-height: 19px;
+  }
+
+  &__error-message {
+    position: absolute;
+    bottom: -20px;
+
+    width: 300px;
+
+    color: #fb6262;
+
+    font-size: 13px;
+    line-height: 19px;
+  }
+}
+
+@media (max-width: 1090px) {
+  .select-field {
+    width: 100%;
+  }
+}

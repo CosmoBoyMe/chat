@@ -1,0 +1,45 @@
+.registration {
+  &__inner {
+    position: relative;
+
+    display: flex;
+  }
+
+  &__sign-up {
+    max-width: 474px;
+    margin: auto;
+  }
+
+  &__bg {
+    width: 50%;
+    min-height: 100vh;
+
+    border-bottom-right-radius: 16px;
+    border-bottom-left-radius: 16px;
+    background-color: #eff5ff;
+    background-image: url('../../../assets/svg/auth-background.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+@media (max-width: 1090px) {
+  .registration {
+    &__inner {
+      align-items: center;
+      flex-direction: column-reverse;
+    }
+
+    &__sign-up {
+      position: absolute;
+      top: 170px;
+
+      margin: 0 auto;
+    }
+
+    &__bg {
+      width: 100%;
+      min-height: 375px;
+    }
+  }
+}

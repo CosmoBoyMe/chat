@@ -1,12 +1,22 @@
 .chat-header {
   display: flex;
+  align-items: center;
 
-  padding: 24px;
+  height: 10.7%;
+  min-height: 66px;
+  padding: 10px 24px;
 
   background-color: white;
 
-  .chat-header__avatar {
-    width: 40px;
-    margin-right: 12px;
+  &__back-btn {
+    display: none;
+
+    width: 16px;
+    height: 16px;
+    margin-right: 24px;
+
+    @media (max-width: 800px) {
+      display: flex;
+    }
   }
 }

@@ -11,7 +11,7 @@ interface IFormFieldProps {
   isValid?: boolean;
   placeholder?: string;
   errorMessage?: string | null;
-  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  onChange: () => void;
 }
 
 export const FormField: FC<IFormFieldProps> = ({
@@ -29,17 +29,7 @@ export const FormField: FC<IFormFieldProps> = ({
     <label className="form-field__label" htmlFor={id}>
       {label}
     </label>
-    <Input
-      type={type}
-      onChange={onChange}
-      value={value}
-      id={id}
-      name={name}
-      placeholder={placeholder}
-      isValid={isValid}
-    />
-    {isValid || (
-      <div className="form-field__error-message">{errorMessage || 'Something goes wrong'}</div>
-    )}
+    <Input type={type} onChange={onChange} value={value} id={id} name={name} placeholder={placeholder} isValid={isValid} />
+    {isValid || <div className="form-field__error-message">{errorMessage || 'Something goes wrong'}</div>}
   </div>
 );

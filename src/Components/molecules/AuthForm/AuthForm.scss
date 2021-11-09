@@ -1,23 +1,46 @@
 .auth-form {
   position: relative;
+
   display: flex;
   flex-direction: column;
+
+  max-width: 354px;
+
   &__field {
     margin-bottom: 32px;
   }
 
-  &__submit-btn {
-    margin-top: 48px;
+  &__capcha-field {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__controller {
+    display: flex;
+
+    margin-right: 12px;
+  }
+
+  &__buttons {
+    display: flex;
+
+    :first-child {
+      margin-right: 12px;
+    }
   }
 }
 
 @media (max-width: 1090px) {
   .auth-form {
     height: 100%;
-    &__submit-btn {
-      margin-top: 0;
-      position: absolute;
-      bottom: 0;
+
+    &__buttons {
+      flex-wrap: wrap;
+
+      :first-child {
+        margin-right: 0;
+        margin-bottom: 8px;
+      }
     }
   }
 }

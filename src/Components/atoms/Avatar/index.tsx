@@ -4,7 +4,7 @@ import maleAvatar from '../../../assets/svg/default-male.svg';
 import femaleAvatar from '../../../assets/svg/default-female.svg';
 
 interface AvatarProps {
-  gender?: 'male' | 'female';
+  gender: 'male' | 'female';
 }
 
 export const Avatar: FC<AvatarProps> = ({ gender }) => (

@@ -1,123 +1,83 @@
 import './Chat.scss';
-import { FC } from 'react';
-import { useLocation, useParams } from 'react-router';
+import { FC, useContext, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, Redirect } from 'react-router';
+import cn from 'classnames';
 import { Header } from '../../organisms/Header';
-
 import { Dialogs } from '../../organisms/Dialogs';
 import { ChatHeader } from '../../organisms/ChatHeader';
 import { ChatBottom } from '../../organisms/ChatBottom';
-import { Messages } from '../../organisms/Messages';
-
-interface IMessage {
-  message: string;
-  isUserMessage: boolean;
-}
-interface IMessages {
-  dialogId: number;
-  name: string;
-  gender: string;
-  status: number;
-  messages: { dialogId: number; messages: IMessage[] };
-}
-
-const data = [
-  {
-    dialogId: 1,
-    name: 'John Wick',
-    gender: 'male',
-    status: 0,
-    messages: {
-      dialogId: 1,
-      messages: [
-        {
-          message: 'В этой жизни нет никакого смысла. Плохие дни нет-нет да случаются.',
-          isUserMessage: true,
-        },
-        {
-          message: 'Джон Уик — не Бугимэн. Он тот, кого посылают убить грёбаного Бугимена',
-          isUserMessage: true,
-        },
-      ],
-    },
-  },
-  {
-    dialogId: 2,
-    name: 'Marina Joe',
-    gender: 'female',
-    status: 3,
-    messages: {
-      dialogId: 2,
-      messages: [
-        {
-          message: 'Сдам в аренду костюм доставщика еды. Посуточно.',
-          isUserMessage: true,
-        },
-        {
-          message: 'Почему-то большинство людей считает, что они хитрее моего ружья.',
-          isUserMessage: false,
-        },
-      ],
-    },
-  },
-  {
-    dialogId: 3,
-    name: 'Ernest Gillroy',
-    gender: 'male',
-    status: 0,
-    messages: {
-      dialogId: 3,
-      messages: [
-        {
-          message:
-            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-          isUserMessage: true,
-        },
-        { message: 'Летающих тарелок нет, это выдумки инопланетян.', isUserMessage: false },
-      ],
-    },
-  },
-  {
-    dialogId: 4,
-    name: 'Konstantin Konstantinopolski',
-    gender: 'male',
-    status: 10,
-    messages: {
-      dialogId: 4,
-      messages: [{ message: 'Hey.', isUserMessage: true }],
-    },
-  },
-];
+// import { Messages } from '../../organisms/Messages';
+import { SCREENS } from '../../../routes/endpoints';
+import { RootState } from '../../../store';
+import { WebSocketContext } from '../../../Context/WebSocketProvider';
+import { setSelectedDialog } from '../../../store/Slices/dialogsSlice';
+import { Loader } from '../../atoms/Loader';
 
 export const Chat: FC = () => {
   const param: { id: string | undefined } = useParams();
+  const ws = useContext(WebSocketContext);
+  const { isAuth } = useSelector((state: RootState) => state.auth);
+  const { dialogs, selectedDialog } = useSelector((state: RootState) => state.dialogs);
+  const dispatch = useDispatch();
 
-  const selectedChat: IMessages | undefined = data.find(
-    (item) => item.dialogId === Number(param.id),
-  );
+  useEffect(() => {
+    ws?.startWebSocket();
+
+    return () => {
+      ws?.closeWebSocket();
+    };
+  }, [ws]);
+
+  useEffect(() => {
+    if (param.id && dialogs) {
+      const selectDialog = dialogs[+param.id];
+      dispatch(setSelectedDialog(selectDialog));
+    }
+    return () => {
+      dispatch(setSelectedDialog(null));
+    };
+  }, [dispatch, param, dialogs]);
+
+  const isDialogSelected = param.id !== undefined;
   return (
     <>
-      <Header />
-      <main className="main">
-        <div className="main__dialogs">
-          <Dialogs data={data} />
-        </div>
-        <div className="main__chat">
-          {selectedChat && (
-            <>
-              <ChatHeader status={selectedChat.status} name={selectedChat.name} />
-              <div className="main__chat-messages">
-                <Messages messages={selectedChat.messages} />
-              </div>
-              <ChatBottom />
-            </>
-          )}
-          {!selectedChat && (
-            <button type="button" className="main__chat__select-btn">
-              Select a chat to stary messaging
-            </button>
-          )}
-        </div>
-      </main>
+      {!isAuth ? (
+        <Redirect to={SCREENS.SCREEN_LOGIN} />
+      ) : (
+        <>
+          <div
+            className={cn('header-wrapper', {
+              'header-wrapper--hidden': isDialogSelected,
+            })}
+          >
+            <Header />
+          </div>
+          <main className="main">
+            <div
+              className={cn('main__dialogs', {
+                'main__dialogs--hidden': isDialogSelected,
+              })}
+            >
+              <Dialogs />
+            </div>
+            <div
+              className={cn('main__chat', {
+                'main__chat--hidden': param.id === undefined,
+              })}
+            >
+              {selectedDialog && (
+                <>
+                  <ChatHeader status="online" name={selectedDialog.name} gender={selectedDialog.gender} />
+                  <div className="main__chat-messages">{/* <Messages messages={selectedDialogs.messages} /> */}</div>
+                  <ChatBottom />
+                </>
+              )}
+              {!selectedDialog && <div className="main__select-btn">Select a chat to stary messaging</div>}
+            </div>
+          </main>
+        </>
+      )}
     </>
   );
 };

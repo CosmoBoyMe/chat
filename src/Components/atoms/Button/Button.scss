@@ -1,5 +1,5 @@
 .button {
-  width: 233px;
+  width: 100%;
   height: 56px;
 
   color: white;
@@ -20,6 +20,25 @@
 
   &:disabled {
     background-color: #d1d1d1;
+  }
+
+  &--white {
+    color: #5c98f1;
+    border: 1px solid #5c98f1;
+    background-color: white;
+
+    &:hover {
+      background-color: #f3f8ff;
+    }
+
+    &:active {
+      background-color: #dfecff;
+    }
+
+    &:disabled {
+      color: #d1d1d1;
+      background-color: #d1d1d1;
+    }
   }
 }
 

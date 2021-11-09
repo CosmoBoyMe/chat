@@ -2,16 +2,22 @@
   display: flex;
   flex-direction: column;
 
+  height: 100%;
+
   &__link {
     padding: 14px 24px;
+
+    color: #333;
   }
 
   &__link--active {
     color: white;
     background-color: #5c98f1;
+
     & span {
       color: white;
     }
+
     & p {
       color: white;
     }
@@ -19,8 +25,9 @@
 
   &__empty {
     width: 210px;
-    margin: 240px auto;
+    margin: auto auto;
   }
+
   &__empty-img {
     width: 200px;
     height: 200px;
