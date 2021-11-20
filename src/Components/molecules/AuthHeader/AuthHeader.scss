@@ -1,7 +1,7 @@
 .auth-header {
   &__logo {
     max-width: 112px;
-    margin-bottom: 16px;
+    margin-bottom: 17px;
   }
 
   &__title {
@@ -17,7 +17,7 @@
   }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 700px) {
   .auth-header {
     &__logo {
       max-width: 84px;
@@ -25,7 +25,7 @@
     }
 
     &__title {
-      margin-bottom: 8px;
+      margin-bottom: 9px;
     }
   }
 }

@@ -6,8 +6,8 @@
   }
 
   &__sign-up {
-    max-width: 474px;
-    margin: auto;
+    max-width: 504px;
+    margin: 63px auto 0;
   }
 
   &__bg {
@@ -32,14 +32,24 @@
 
     &__sign-up {
       position: absolute;
-      top: 170px;
+      top: 70px;
 
       margin: 0 auto;
     }
 
     &__bg {
       width: 100%;
-      min-height: 375px;
+      min-height: 256px;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .registration {
+    &__sign-up {
+      top: 123px;
+
+      max-width: 374px;
     }
   }
 }

@@ -1,9 +1,9 @@
 import './Header.scss';
-
+import { FC } from 'react';
 import { Logo } from '../../atoms/Logo';
 import profileIcon from '../../../assets/svg/profile.svg';
 
-export const Header = () => (
+export const Header: FC = () => (
   <header className="header">
     <div className="header__logo">
       <Logo />

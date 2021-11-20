@@ -3,17 +3,16 @@ import { FC, useEffect } from 'react';
 import { useForm, Controller, SubmitHandler } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { loadGenders, signUpUser } from '../../../store/Slices/signUpSlice';
+import { loadGenders, signUpSelect, signUpUser } from '../../../store/Slices/signUpSlice';
 import { FormField } from '../FormField';
 import { Button } from '../../atoms/Button';
 import { Captcha } from '../../atoms/Capcha';
 import { SCREENS } from '../../../routes/endpoints';
 import { SelectField } from '../SelectField';
-import { RootState } from '../../../store';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 
-interface FormValues {
+interface IFormValues {
   login: string;
   password: string;
   passwordConfirm: string;
@@ -36,11 +35,19 @@ const SignUpShema = yup
 
 export const SignUpForm: FC = () => {
   const history = useHistory();
-  const dispatch = useDispatch();
-  const { genders, errorMessage, fetching } = useSelector((state: RootState) => state.signUp);
-  const handlerFormSubmit: SubmitHandler<FormValues> = ({ login, password, passwordConfirm, nickname, gender, captcha }) => {
+  const dispatch = useAppDispatch();
+  const { genders, errorMessage, fetching } = useAppSelector(signUpSelect.all);
+
+  const handlerFormSubmit: SubmitHandler<IFormValues> = ({
+    login,
+    password,
+    passwordConfirm,
+    nickname,
+    gender,
+    captcha,
+  }) => {
     const selectedGender = genders.find((item) => item.gender === gender);
-    const genderId = selectedGender?.id;
+    const genderId: number = selectedGender!.id;
     const values = { login, password, passwordConfirm, name: nickname, id: genderId, captcha };
 
     dispatch(signUpUser(values));
@@ -56,8 +63,8 @@ export const SignUpForm: FC = () => {
   const {
     handleSubmit,
     control,
-    formState: { errors, isSubmitting },
-  } = useForm<FormValues>({
+    formState: { errors },
+  } = useForm<IFormValues>({
     resolver: yupResolver(SignUpShema),
   });
 
@@ -118,7 +125,7 @@ export const SignUpForm: FC = () => {
           defaultValue=""
           render={({ field, fieldState: { invalid } }) => (
             <FormField
-              placeholder="Input password"
+              placeholder="Password confirmation"
               type="password"
               name="passwordConfirm"
               id="passwordConfirm"
@@ -151,6 +158,24 @@ export const SignUpForm: FC = () => {
           )}
         />
       </div>
+      <div className="sign-up-form__field sign-up-form__selector">
+        <Controller
+          control={control}
+          name="gender"
+          render={({ field, fieldState: { invalid } }) => (
+            <SelectField
+              label="Your gender"
+              onChange={field.onChange}
+              name="gender"
+              id="gender"
+              options={getGendersNames()}
+              value={field.value}
+              isValid={!invalid}
+              errorMessage={errors.gender?.message ?? null}
+            />
+          )}
+        />
+      </div>
       <div className="sign-up-form__field auth-form__capcha-field">
         <div className="auth-form__controller">
           <Controller
@@ -172,25 +197,9 @@ export const SignUpForm: FC = () => {
             )}
           />
         </div>
-        <Captcha />
-      </div>
-      <div className="auth-form__field">
-        <Controller
-          control={control}
-          name="gender"
-          render={({ field, fieldState: { invalid } }) => (
-            <SelectField
-              label="Your gender"
-              onChange={field.onChange}
-              name="gender"
-              id="gender"
-              options={getGendersNames()}
-              value={field.value}
-              isValid={!invalid}
-              errorMessage={errors.gender?.message ?? null}
-            />
-          )}
-        />
+        <div className="sign-up-form__captcha">
+          <Captcha />
+        </div>
       </div>
       <p className="sign-up-form__error">{errorMessage}</p>
       <div className="sign-up-form__buttons">

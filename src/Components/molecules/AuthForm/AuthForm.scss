@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
 
-  max-width: 354px;
+  width: 100%;
 
   &__field {
     margin-bottom: 32px;
@@ -21,8 +21,18 @@
     margin-right: 12px;
   }
 
+  &__captcha {
+    height: 56px;
+  }
+
+  &__error {
+    color: #fb6262;
+  }
+
   &__buttons {
     display: flex;
+
+    margin-top: 15px;
 
     :first-child {
       margin-right: 12px;
@@ -30,17 +40,25 @@
   }
 }
 
-@media (max-width: 1090px) {
+@media (max-width: 700px) {
   .auth-form {
-    height: 100%;
+    &__captcha {
+      height: 48px;
+    }
 
     &__buttons {
       flex-wrap: wrap;
+
+      margin-top: 16px;
 
       :first-child {
         margin-right: 0;
         margin-bottom: 8px;
       }
+    }
+
+    &__field {
+      margin-bottom: 24px;
     }
   }
 }

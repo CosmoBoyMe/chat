@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '..';
 
 interface IDialog {
   name: string;
@@ -7,12 +8,12 @@ interface IDialog {
 
 interface IDialogsState {
   dialogs: IDialog[] | null;
-  selectedDialog: null | IDialog;
+  selectedDialogId: null | number;
 }
 
 const initialState: IDialogsState = {
   dialogs: null,
-  selectedDialog: null,
+  selectedDialogId: null,
 };
 
 const dialogsSlice = createSlice({
@@ -22,11 +23,18 @@ const dialogsSlice = createSlice({
     setDialogs(state, action: PayloadAction<IDialog[]>) {
       state.dialogs = action.payload;
     },
-    setSelectedDialog(state, action: PayloadAction<IDialog | null>) {
-      state.selectedDialog = action.payload;
+    setSelectedDialogId(state, action: PayloadAction<number | null>) {
+      state.selectedDialogId = action.payload;
     },
   },
 });
 
-export const { setDialogs, setSelectedDialog } = dialogsSlice.actions;
+const dialogsSelect = {
+  all: (state: RootState) => state.dialogs,
+  dialogs: (state: RootState) => state.dialogs.dialogs,
+  selectedDialogId: (state: RootState) => state.dialogs.selectedDialogId,
+};
+
+export { dialogsSelect };
+export const { setDialogs, setSelectedDialogId } = dialogsSlice.actions;
 export default dialogsSlice.reducer;

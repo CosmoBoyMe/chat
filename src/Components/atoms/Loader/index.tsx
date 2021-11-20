@@ -4,6 +4,6 @@ import LoaderSvg from '../../../assets/svg/loader.svg';
 
 export const Loader: FC = () => (
   <div className="loader">
-    <img className="loader__img" src={LoaderSvg} alt="loading" />
+    <img className="loader__img" src={LoaderSvg} alt="loader" />
   </div>
 );

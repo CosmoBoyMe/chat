@@ -11,7 +11,7 @@
   }
 
   &__name {
-    margin-bottom: 4px;
+    margin-bottom: 7px;
   }
 
   &__status {
@@ -23,6 +23,11 @@
   .chat-info {
     &__avatar {
       display: block;
+    }
+
+    &__name {
+      margin-bottom: 0;
+      padding-top: 2px;
     }
   }
 }

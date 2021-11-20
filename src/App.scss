@@ -20,7 +20,8 @@ html {
 h1,
 h2,
 h3,
-h4 {
+h4,
+p {
   margin: 0;
   padding: 0;
 }
@@ -67,6 +68,7 @@ h4 {
 
 p {
   font-size: 16px;
+  font-weight: 500;
   line-height: 20px;
 }
 
@@ -75,7 +77,7 @@ p {
   line-height: 17px;
 }
 
-@media screen and (max-width: 520px) {
+@media (max-width: 700px) {
   h1 {
     font-size: 27px;
     font-weight: 800;

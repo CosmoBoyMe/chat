@@ -10,7 +10,12 @@
     color: #333;
 
     font-size: 13px;
+    font-weight: 600;
     line-height: 19px;
+  }
+
+  &__input {
+    height: 56px;
   }
 
   &__error-message {
@@ -23,5 +28,13 @@
 
     font-size: 13px;
     line-height: 19px;
+  }
+}
+
+@media (max-width: 700px) {
+  .form-field {
+    &__input {
+      height: 48px;
+    }
   }
 }

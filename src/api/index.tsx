@@ -1,11 +1,12 @@
 import axios from 'axios';
-import { IAuthFormValues, ISignUpFormValues } from '../types';
+import { BASE_URL_API, serverApi } from '../const';
+import { IAuthFormValues, ISignUpFormValues } from '../interfaces';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://109.194.37.212:93/',
+  baseURL: BASE_URL_API,
 });
 
-export const authRegister = ({ login, password, passwordConfirm, name, id, captcha }: ISignUpFormValues) => {
+const authRegister = ({ login, password, passwordConfirm, name, id, captcha }: ISignUpFormValues) => {
   const formData = new FormData();
   formData.append('login', login);
   formData.append('password', password);
@@ -13,14 +14,23 @@ export const authRegister = ({ login, password, passwordConfirm, name, id, captc
   formData.append('name', name);
   formData.append('gender_id', `${id}`);
   formData.append('captcha', captcha);
-  return axiosInstance.post('/api/auth/register', formData);
+  return axiosInstance.post(serverApi.register, formData);
 };
 
-export const getGenders = () => axiosInstance.get('/api/auth');
-export const authLogin = ({ login, password, captcha }: IAuthFormValues) => {
+const authLogin = ({ login, password, captcha }: IAuthFormValues) => {
   const formData = new FormData();
   formData.append('login', login);
   formData.append('password', password);
   formData.append('captcha', captcha);
-  return axiosInstance.post('/api/auth/login', formData);
+  return axiosInstance.post(serverApi.login, formData);
 };
+
+const getGenders = () => axiosInstance.get(serverApi.genders);
+
+const postFile = (file: File) => {
+  const formData = new FormData();
+  formData.append('0', file);
+  return axiosInstance.post(serverApi.upload, formData);
+};
+
+export { authRegister, authLogin, getGenders, postFile };

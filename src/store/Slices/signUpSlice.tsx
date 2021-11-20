@@ -1,4 +1,5 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '..';
 import { authRegister, getGenders } from '../../api';
 
 interface ISignUpState {
@@ -18,21 +19,21 @@ const initialState: ISignUpState = {
   fetching: false,
 };
 
-interface FormValues {
+interface IFormValues {
   login: string;
   password: string;
   passwordConfirm: string;
   name: string;
-  id: number | undefined;
+  id: number;
   captcha: string;
 }
 
-export const signUpUser = createAsyncThunk('auth/signUpUser', async (values: FormValues, { rejectWithValue }) => {
+export const signUpUser = createAsyncThunk('auth/signUpUser', async (values: IFormValues, { rejectWithValue }) => {
   try {
     const response = await authRegister(values);
     return response.data;
-  } catch (error) {
-    const errorMessage = (error as Error).message;
+  } catch (error: any) {
+    const errorMessage: string = error.response.data;
     return rejectWithValue(errorMessage);
   }
 });
@@ -52,31 +53,39 @@ const signUpSlice = createSlice({
   name: 'signUp',
   initialState,
   reducers: {},
-  extraReducers: (builder) => {
-    builder.addCase(signUpUser.pending, (state) => {
+  extraReducers: {
+    [signUpUser.pending.type]: (state) => {
       state.fetching = true;
-    });
-    builder.addCase(signUpUser.fulfilled, (state) => {
+    },
+    [signUpUser.fulfilled.type]: (state) => {
       state.errorMessage = '';
       state.fetching = false;
-    });
-    builder.addCase(signUpUser.rejected, (state, action: any) => {
+    },
+    [signUpUser.rejected.type]: (state, action: PayloadAction<string>) => {
       state.fetching = false;
       state.errorMessage = action.payload;
-    });
+    },
 
-    builder.addCase(loadGenders.pending, (state) => {
+    [loadGenders.pending.type]: (state) => {
       state.fetching = true;
-    });
-    builder.addCase(loadGenders.fulfilled, (state, action: any) => {
+    },
+    [loadGenders.fulfilled.type]: (state, action: PayloadAction<IGenders[]>) => {
       state.genders = action.payload;
       state.fetching = false;
-    });
-    builder.addCase(loadGenders.rejected, (state, action: any) => {
+    },
+    [loadGenders.rejected.type]: (state, action: PayloadAction<string>) => {
       state.fetching = false;
       state.errorMessage = action.payload;
-    });
+    },
   },
 });
 
+const signUpSelect = {
+  all: (state: RootState) => state.signUp,
+  errorMessage: (state: RootState) => state.signUp,
+  genders: (state: RootState) => state.signUp,
+  fetching: (state: RootState) => state.signUp.fetching,
+};
+
+export { signUpSelect };
 export default signUpSlice.reducer;

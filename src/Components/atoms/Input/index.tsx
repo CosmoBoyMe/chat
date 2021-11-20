@@ -1,6 +1,6 @@
 import './Input.scss';
+import cn from 'classnames';
 import { ChangeEvent, FC } from 'react';
-import classNames from 'classnames';
 
 interface IInputProps {
   value: string;
@@ -14,7 +14,7 @@ interface IInputProps {
 
 export const Input: FC<IInputProps> = ({ placeholder, value, name, id, type, onChange, isValid = true }) => (
   <div
-    className={classNames('input-field', {
+    className={cn('input-field', {
       'input-field--error': !isValid,
     })}
   >

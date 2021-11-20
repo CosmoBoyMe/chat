@@ -1,7 +1,7 @@
 import './Avatar.scss';
 import { FC } from 'react';
-import maleAvatar from '../../../assets/svg/default-male.svg';
-import femaleAvatar from '../../../assets/svg/default-female.svg';
+import maleAvatar from '../../../assets/svg/genderMale.svg';
+import femaleAvatar from '../../../assets/svg/genderFemale.svg';
 
 interface AvatarProps {
   gender: 'male' | 'female';

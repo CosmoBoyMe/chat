@@ -19,8 +19,10 @@ export const SelectField: FC<ISelectField> = ({ value, name, id, label, isValid,
       <label aria-label="select field label" htmlFor={id} className="select-field__label">
         {label}
       </label>
-      <Select isValid={isValid} options={options} value={value} id={id} name={name} onChange={onChange} />
-      {isValid || <div className="select-field__error-message">{errorMessage || 'Something goes wrong'}</div>}
+      <div className="select-field__select">
+        <Select isValid={isValid} options={options} value={value} id={id} name={name} onChange={onChange} />
+      </div>
+      {!isValid && <div className="select-field__error-message">{errorMessage || 'Something goes wrong'}</div>}
     </div>
   );
 };

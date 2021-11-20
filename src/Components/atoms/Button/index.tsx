@@ -1,6 +1,6 @@
 import './Button.scss';
-import { FC, MouseEvent } from 'react';
 import cn from 'classnames';
+import { FC, MouseEvent } from 'react';
 
 interface IButtonProps {
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;

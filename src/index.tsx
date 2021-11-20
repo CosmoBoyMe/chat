@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { store } from './store';
 import './normalize.css';
 import App from './App';
-import { WebSocketProvider } from './Context/WebSocketProvider';
+import { WebSocketProvider } from './WebSocket/WebSocketProvider';
 
 ReactDOM.render(
   <React.StrictMode>

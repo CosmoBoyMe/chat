@@ -6,7 +6,7 @@
   justify-content: space-between;
 
   width: 100%;
-  height: 56px;
+  height: 100%;
 
   border: 1px solid #b3cdf8;
   border-radius: 8px;
@@ -18,13 +18,14 @@
     width: 100px;
     height: 100%;
     margin: 0 auto;
+    padding: 5px 0;
 
     background-color: transparent;
   }
 
   &__btn {
     position: absolute;
-    right: -40px;
+    right: -32px;
 
     width: 24px;
     height: 24px;
@@ -44,12 +45,9 @@
   .captcha {
     &__btn {
       right: 10px;
-    }
-  }
-}
 
-@media (max-width: 520px) {
-  .captcha {
-    height: 46px;
+      width: 15px;
+      height: 15px;
+    }
   }
 }

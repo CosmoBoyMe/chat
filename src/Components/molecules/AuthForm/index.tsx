@@ -10,7 +10,8 @@ import { FormField } from '../FormField';
 import { Button } from '../../atoms/Button';
 import { Captcha } from '../../atoms/Capcha';
 import { SCREENS } from '../../../routes/endpoints';
-import { authUser } from '../../../store/Slices/authSlice';
+import { authSelect, authUser } from '../../../store/Slices/authSlice';
+import { useAppSelector } from '../../../hooks';
 
 interface FormValues {
   login: string;
@@ -29,9 +30,9 @@ const logInShema = yup
 
 export const AuthForm: FC = () => {
   const history = useHistory();
-  const { fetching, errorMessage } = useSelector((state: RootState) => state.auth);
+  const { fetching, errorMessage } = useAppSelector(authSelect.all);
   const dispatch = useDispatch();
-  const handlerFormSubmit: SubmitHandler<FormValues> = (values) => {
+  const handlerSubmitForm: SubmitHandler<FormValues> = (values) => {
     dispatch(authUser(values));
   };
 
@@ -43,12 +44,12 @@ export const AuthForm: FC = () => {
     resolver: yupResolver(logInShema),
   });
 
-  const handlerRegistrationBtn = () => {
+  const handlerClickBtn = () => {
     history.push(SCREENS.SCREEN_USER_SIGN_UP);
   };
 
   return (
-    <form onSubmit={handleSubmit(handlerFormSubmit)} className="auth-form">
+    <form onSubmit={handleSubmit(handlerSubmitForm)} className="auth-form">
       <div className="auth-form__field">
         <Controller
           name="login"
@@ -110,14 +111,16 @@ export const AuthForm: FC = () => {
             )}
           />
         </div>
-        <Captcha />
+        <div className="auth-form__captcha">
+          <Captcha />
+        </div>
       </div>
-      <p className="auth-form--error">{errorMessage}</p>
+      <p className="auth-form__error">{errorMessage}</p>
       <div className="auth-form__buttons">
         <Button disabled={fetching} type="submit">
           Log in
         </Button>
-        <Button onClick={handlerRegistrationBtn} type="button">
+        <Button onClick={handlerClickBtn} type="button">
           Registration
         </Button>
       </div>

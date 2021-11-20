@@ -3,21 +3,20 @@
   align-items: center;
   justify-content: space-between;
 
-  height: 7.5vh;
-  min-height: 58px;
-  padding: 5px 24px;
+  height: 100%;
+  padding: 0 24px;
 
-  border-bottom: 1px solid #d7e6ff;
+  border-bottom: 1px solid rgb(215, 230, 255);
   background-color: white;
 
   &__logo {
     align-self: center;
 
-    max-width: 86px;
+    width: 86px;
   }
 
   &__profile {
-    max-width: 48px;
+    width: 48px;
 
     background-color: white;
   }
@@ -25,5 +24,19 @@
   &__profile-img {
     border-radius: 50%;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  }
+}
+
+@media (max-width: 800px) {
+  .header {
+    padding: 0 12px;
+
+    &__logo {
+      width: 63px;
+    }
+
+    &__profile {
+      width: 36px;
+    }
   }
 }

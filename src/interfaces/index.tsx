@@ -11,3 +11,10 @@ export interface ISignUpFormValues {
   id: number | undefined;
   captcha: string;
 }
+
+export interface ISelectedFile {
+  name: string;
+  type: string;
+  size: number;
+  fileUrl: string;
+}

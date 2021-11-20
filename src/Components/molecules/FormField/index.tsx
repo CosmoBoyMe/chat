@@ -29,7 +29,9 @@ export const FormField: FC<IFormFieldProps> = ({
     <label className="form-field__label" htmlFor={id}>
       {label}
     </label>
-    <Input type={type} onChange={onChange} value={value} id={id} name={name} placeholder={placeholder} isValid={isValid} />
-    {isValid || <div className="form-field__error-message">{errorMessage || 'Something goes wrong'}</div>}
+    <div className="form-field__input">
+      <Input type={type} onChange={onChange} value={value} id={id} name={name} placeholder={placeholder} isValid={isValid} />
+    </div>
+    {!isValid && <div className="form-field__error-message">{errorMessage || 'Something goes wrong'}</div>}
   </div>
 );

@@ -1,4 +1,8 @@
 .dialog-info {
+  &__name {
+    margin-bottom: 4px;
+  }
+
   &__last-message {
     overflow: hidden;
 

@@ -1,12 +1,19 @@
-.main {
-  display: flex;
-  justify-content: space-between;
+.chat {
+  &__header {
+    height: 81px;
+  }
 
-  height: calc(100vh - 7.5vh); // - header
+  &__main {
+    display: flex;
+    justify-content: space-between;
+
+    height: calc(100vh - 81px); // - header
+  }
+
   &__dialogs {
     overflow-y: auto;
 
-    max-width: 365px;
+    max-width: 362px;
     padding-top: 20px;
 
     &::-webkit-scrollbar {
@@ -75,12 +82,18 @@
 }
 
 @media (max-width: 800px) {
-  .header-wrapper--hidden {
-    display: none;
-  }
+  .chat {
+    &__header {
+      height: 65px;
+    }
 
-  .main {
-    height: 100%;
+    &__header--hidden {
+      display: none;
+    }
+
+    &__main {
+      height: 100%;
+    }
 
     &__chat--hidden {
       display: none;
@@ -92,12 +105,16 @@
 
     &__dialogs {
       max-width: 100%;
-      height: calc(100vh - 7.5vh);
+      height: calc(100vh - 65px);
       margin: 0 auto;
     }
 
     &__dialogs--hidden {
       display: none;
+    }
+
+    &__dialogs--hidden + &__chat {
+      border-left: none;
     }
   }
 }
