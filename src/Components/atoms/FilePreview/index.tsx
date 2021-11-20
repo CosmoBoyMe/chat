@@ -1,6 +1,6 @@
 import './FilePreview.scss';
 import { FC } from 'react';
-import { convertSizeToMb } from '../../../helpers/helpers';
+import { convertSizeToMb } from '../../../helpers';
 import { ISelectedFile } from '../../../interfaces';
 
 interface IFilePreviewProps {

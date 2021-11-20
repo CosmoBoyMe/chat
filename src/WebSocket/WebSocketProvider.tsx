@@ -1,5 +1,5 @@
 import { createContext, FC } from 'react';
-import { buildWebSocketUrl, isJson } from '../helpers/helpers';
+import { buildWebSocketUrl, isJson } from '../helpers';
 import { useAppDispatch } from '../hooks';
 import { ISelectedFile } from '../interfaces';
 import { setDialogs } from '../store/Slices/dialogsSlice';

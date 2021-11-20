@@ -16,7 +16,7 @@ import {
 import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { authSelect } from '../../../store/Slices/authSlice';
 import { dialogsSelect } from '../../../store/Slices/dialogsSlice';
-import { isFileValid } from '../../../helpers/helpers';
+import { isFileValid } from '../../../helpers';
 
 export const ChatBottom: FC = () => {
   const dispatch = useAppDispatch();
